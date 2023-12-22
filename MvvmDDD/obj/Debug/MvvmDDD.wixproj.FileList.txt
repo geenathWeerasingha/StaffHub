@@ -1,0 +1,13 @@
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV15\MvvmDDD\bin\Debug\cab1.cab
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV15\MvvmDDD\bin\Debug\MvvmDDD.msi
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV15\MvvmDDD\bin\Debug\MvvmDDD.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\MvvmDDD.wixproj.BindContentsFileListnull.txt
+obj\Debug\MvvmDDD.wixproj.BindOutputsFileListnull.txt
+obj\Debug\MvvmDDD.wixproj.BindBuiltOutputsFileListnull.txt
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV20\MvvmDDD\bin\Debug\Setup.msi
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV20\MvvmDDD\bin\Debug\Setup.wixpdb
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV20_WixUI_InstallDir\MvvmDDD\bin\Debug\Setup.msi
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV20_WixUI_InstallDir\MvvmDDD\bin\Debug\Setup.wixpdb
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV21\MvvmDDD\bin\Debug\Setup.msi
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV21\MvvmDDD\bin\Debug\Setup.wixpdb

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<appSettings>
+	<add key="DatabasePreference" value="SQLite" />
+	<add key="EMSConnection" value="data source=DESKTOP-L1OJG4S\SQLEXPRESS; integrated security=true; initial catalog=MvvmDemoDb"/>
+	<add key="SQLiteConnection" value="Data Source=C:\Users\Lenovo\source\repos\SQliteDatabase\MvvmDemoDb;" />
+</appSettings>
+
+
+
+<!--Database Preferences- MySql/SQLite-->

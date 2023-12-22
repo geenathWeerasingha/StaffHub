@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define MvvmDemo_TargetDir=$(var.MvvmDemo.TargetDir)?>
+	<Product Id="fb398dae-df74-4087-958d-1841daa38cbc" Name="My Wpf Application" Language="1033" Version="1.0.0.0" Manufacturer="GG" UpgradeCode="b6847a50-9b1d-41d1-899e-389fbc54e5e1">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<Icon Id="AAA.ico" SourceFile="$(var.ProjectDir)AAA.ico" />
+		<Property Id="ARPPRODUCTION" Value="AAA.ico" />
+
+
+		<WixVariable Id="WixUIBannerBmp" Value="Images\installer_top_banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="Images\installer_background.bmp" />
+		<WixVariable Id="WixUILicenseRef" Value="$(var.ProjectDir)\license.rtf" />
+
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />   		
+		<UIRef Id="WixUI_InstallDir" />
+		
+		
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="My Wpf Application" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentRef Id="ApplicationShortcut" />
+			<ComponentRef Id="ApplicationShortcutDesktop" />
+
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				
+				  <Directory Id="INSTALLFOLDER" Name="My Wpf Application" />
+			   
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="My Wpf Application" />
+			</Directory>
+			<Directory Id="DesktopFolder" Name="Desktop" />
+
+		</Directory>
+	</Fragment>
+
+
+	<Fragment>
+		<DirectoryRef Id="ApplicationProgramsFolder">
+    		<Component Id="ApplicationShortcut" Guid="ad7a6268-d242-489c-ad6d-bd54269f7a82">
+	   		<Shortcut Id="ApplicationStartMenuShortcut" Name="MyWpfApplication" Description="MyWpfApplication" Target="[INSTALLFOLDER]MvvmDemo.exe" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
+			<RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+			<RegistryValue Root="HKCU" Key="Software\MyWpfApplication" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+		</Component>
+     </DirectoryRef>
+
+		<DirectoryRef Id="DesktopFolder">
+			<Component Id="ApplicationShortcutDesktop" Guid="245a2556-0047-499e-914a-a3ed4d0298da">
+				<Shortcut Id="ApplicationDesktopShortcut" Name="MyWpfApplication" Description="MyWpfApplication" Target="[INSTALLFOLDER]MvvmDemo.exe" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
+				<RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+				<RegistryValue Root="HKCU" Key="Software\MyWpfApplication" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+
+
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+			<Component Id="MvvmDemo.runtimeconfig.json" Guid="f8100870-01f3-42e0-8f59-59c8a3111200">
+			  <File Id="MvvmDemo.runtimeconfig.json" Name="MvvmDemo.runtimeconfig.json" Source="$(var.MvvmDemo_TargetDir)MvvmDemo.runtimeconfig.json" />
+			</Component>
+			<Component Id="MvvmDemo.dll" Guid="cbee0839-34c4-4dd5-91e7-e031f0b1c599">
+			  <File Id="MvvmDemo.dll" Name="MvvmDemo.dll" Source="$(var.MvvmDemo_TargetDir)MvvmDemo.dll" />
+			</Component>
+			<Component Id="MvvmDemo.dll.config" Guid="7d2ac1df-5b9f-47ed-8d00-f2325de4eb43">
+			  <File Id="MvvmDemo.dll.config" Name="MvvmDemo.dll.config" Source="$(var.MvvmDemo_TargetDir)MvvmDemo.dll.config" />
+			</Component>
+			<Component Id="Microsoft.Data.Sqlite.dll" Guid="ecd35cf5-0fb0-442a-bcb0-2b6f476a5e47">
+			  <File Id="Microsoft.Data.Sqlite.dll" Name="Microsoft.Data.Sqlite.dll" Source="$(var.MvvmDemo_TargetDir)Microsoft.Data.Sqlite.dll" />
+			</Component>
+			<Component Id="SQLitePCLRaw.batteries_v2.dll" Guid="01a7689d-fb67-48c1-9a16-0a5dcf5aaee0">
+			  <File Id="SQLitePCLRaw.batteries_v2.dll" Name="SQLitePCLRaw.batteries_v2.dll" Source="$(var.MvvmDemo_TargetDir)SQLitePCLRaw.batteries_v2.dll" />
+			</Component>
+			<Component Id="SQLitePCLRaw.core.dll" Guid="b26c623d-dc0a-4f64-9b8f-d9fe874281dd">
+			  <File Id="SQLitePCLRaw.core.dll" Name="SQLitePCLRaw.core.dll" Source="$(var.MvvmDemo_TargetDir)SQLitePCLRaw.core.dll" />
+			</Component>
+			<Component Id="SQLitePCLRaw.provider.e_sqlite3.dll" Guid="aaabbe3d-67f9-4c90-b8cc-dacb7da9bc21">
+			  <File Id="SQLitePCLRaw.provider.e_sqlite3.dll" Name="SQLitePCLRaw.provider.e_sqlite3.dll" Source="$(var.MvvmDemo_TargetDir)SQLitePCLRaw.provider.e_sqlite3.dll" />
+			</Component>
+		
+			<Component Id="configuration.xml" Guid="5fc89d2a-9bb6-4c5c-adb7-78ab18caf844">
+				<File Id="configuration.xml" Name="configuration.xml" Source="$(var.MvvmDemo_TargetDir)configuration.xml" />
+			</Component>
+			
+			<Component Id="MvvmDemo.exe" Guid="ade29c00-a0ff-4a2e-81f5-ef2041f12d5a">
+				<File Id="MvvmDemo.exe" Name="MvvmDemo.exe" Source="$(var.MvvmDemo_TargetDir)MvvmDemo.exe" />
+			</Component>
+
+			<Component Id="e_sqlite3.dll" Guid="a6a852b7-8c86-4a33-86b7-080c9aa06c32">
+				<File Id="e_sqlite3.dll" Name="e_sqlite3.dll" Source="$(var.MvvmDemo_TargetDir)runtimes/win-x64/native/e_sqlite3.dll" />
+			</Component>
+
+
+			<Component Id="sni.dll" Guid="bc536efd-aafe-4c46-a46c-9496094421b4">
+				<File Id="sni.dll" Name="sni.dll" Source="$(var.MvvmDemo_TargetDir)runtimes/win-x64/native/sni.dll" />
+			</Component>
+
+
+			<Component Id="System.Data.SqlClient.dll" Guid="973cfce4-f9e4-4fea-a869-9f4d205eda1e">
+				<File Id="System.Data.SqlClient.dll" Name="System.Data.SqlClient.dll" Source="$(var.MvvmDemo_TargetDir)runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll" />
+			</Component>
+			
+		    
+				
+			
+			
+		</ComponentGroup>
+	</Fragment>
+</Wix>

@@ -1,0 +1,2 @@
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV21\MvvmDDD\bin\Debug\Setup.msi
+C:\Users\Lenovo\source\repos\MvvmDemoAdoV21\MvvmDDD\bin\Debug\Setup.wixpdb
